@@ -1,0 +1,89 @@
+from turtle import *
+speed(0)
+colormode(255)
+print("Welcome to the American Flag project! Please enter the width you would like the hoist to be.")
+#everything is in proportion with the hoist
+hoist=int(input())
+#the variable for the fly
+lineb=hoist*1.9
+pu()
+# where the flag is located on the coordinate grid
+goto(-600,-200)
+pd()
+left(90)
+forward(hoist)
+right(90)
+forward(lineb)
+right(90)
+forward(hoist)
+right(90)
+forward(lineb)
+right(90)
+forward(hoist)
+currentx=xcor()
+currenty=ycor()
+def star(f):
+       color(255,255,255)
+       begin_fill()
+       for z in range(5):
+           forward(hoist*0.0616)
+           right(144)
+       end_fill()
+#the thirteen stripes
+color(187, 19, 62)
+begin_fill()
+right(90)
+forward(lineb)
+right(90)
+forward(.0769*hoist)
+right(90)
+forward(lineb)
+speed(0)
+for i in range(6):
+    left(90)
+    forward(.0769*hoist)
+    left (90)
+    forward(lineb)
+    right(90)
+    forward(.0769*hoist)
+    right (90)
+    forward(lineb)
+end_fill()
+#positioning the union
+pu()
+goto(currentx, currenty)
+pd()
+left(180)
+speed(0)
+# drawing the union in proportion to the hoist
+for h in range(2):
+    color(0, 38,100)
+    begin_fill()
+    forward(.76*hoist)
+    right(90)
+    forward(.5385*hoist)
+    right(90)
+    end_fill()
+# the stars get cut off without this part
+forward(hoist*0.0322)
+right(90)
+forward(hoist*0.03696)
+left(90)
+# making the rows for the stars
+def starrows(g):
+    for k in range(g):
+            star(hoist)
+            pu()
+            forward(hoist*0.063+hoist*0.0616)
+            pd()
+for k in range(2):
+    if(k%2==0):
+        starrows(6)
+        pu()
+        goto(currentx+hoist*0.063,currenty-(hoist*0.054*(i-3)))
+        pd()
+else:
+        starrows(5)
+        pu()
+        goto(currentx,currenty-(hoist*0.054*(i-3)))
+        pd()
